@@ -2,6 +2,8 @@ package backend;
 import backend.adapter.GlobalPayAdapter;
 import backend.adapter.PayBrasilAdapter;
 import backend.decorator.*;
+import backend.proxy.CatalogoProxy;
+import backend.proxy.CatalogoReal;
 import backend.singleton.NetworkManager;
 
 public class Main {
@@ -62,9 +64,17 @@ public class Main {
         pedido = new FreteExpressDecorator(pedido, true);
         System.out.println("[DECORATOR] + FreteExpress:       " + pedido.getDescricao() + "   | R$" + pedido.getValor());
 
-        //TODO
         // -------------------
         //  ## PROXY ##
         // -------------------
+
+        CatalogoReal catalogoReal = new CatalogoReal();
+        System.out.println("\n[PROXY] Buscando produto #42... " + catalogoReal.buscarProduto(42));
+
+        CatalogoProxy catalogoProxy = new CatalogoProxy("is_admin");
+        System.out.println("[PROXY] Buscando produto #42... " + catalogoProxy.buscarProduto(42));
+
+        CatalogoProxy catalogoProxy2 = new CatalogoProxy("asdkalskfjlas");
+        System.out.println("[PROXY] Tentando produto especial sem permissão... " + catalogoProxy2.buscarProduto(42));
     }
 }
