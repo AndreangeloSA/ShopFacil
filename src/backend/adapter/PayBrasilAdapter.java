@@ -2,7 +2,7 @@ package backend.adapter;
 
 public class PayBrasilAdapter implements Pagamento {
 
-    private PayBrasilService payBrasilService= new PayBrasilService();
+    private PayBrasilService payBrasilService = new PayBrasilService();
 
     public PayBrasilAdapter(){
     }
