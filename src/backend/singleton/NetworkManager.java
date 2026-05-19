@@ -7,7 +7,6 @@ public class NetworkManager {
 
     private String URL_BASE = "https://api.shopfacil.com";
     private int contadorRequisicoes;
-    private String nome_servico;
     private int timeout; // seconds
 
     //contém timeout e requisições realizadas
@@ -22,8 +21,8 @@ public class NetworkManager {
     }
 
     //realiza conexão, gerando url completa e contador de requisições
-    public void connect(String service_name){
-        String full_URL = getBASE_URL() + "/" + getNomeServico();
+    public void connect(String nome_servico){
+        String full_URL = getBASE_URL() + "/" + nome_servico;
         contadorRequisicoes++;
     }
 
@@ -46,9 +45,5 @@ public class NetworkManager {
 
     public int getTimeout() {
         return timeout;
-    }
-
-    public String getNomeServico() {
-        return nome_servico;
     }
 }

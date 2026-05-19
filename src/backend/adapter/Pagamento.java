@@ -1,6 +1,8 @@
 package backend.adapter;
 
+import java.util.HashMap;
+
 public interface Pagamento {
 
-    void processar_pagamento(float valor, String dados_cartao);
+    boolean processar_pagamento(double valor, HashMap dados_Cartao);
 }

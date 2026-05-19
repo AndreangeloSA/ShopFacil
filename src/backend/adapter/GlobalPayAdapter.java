@@ -1,5 +1,7 @@
 package backend.adapter;
 
+import java.util.HashMap;
+
 public class GlobalPayAdapter implements Pagamento {
 
     private GlobalPayService globalPayService = new GlobalPayService();
@@ -8,8 +10,8 @@ public class GlobalPayAdapter implements Pagamento {
     }
 
     @Override
-    public void processar_pagamento(float valor, String dados_cartao){
-        globalPayService.charge(valor, dados_cartao);
-        System.out.println("[ADAPTER] Pagando " + valor + " via GlobalPay... Charge approved.");
+    public boolean processar_pagamento(double valor, HashMap dados_Cartao){
+        globalPayService.charge(valor, dados_Cartao);
+        return true;
     }
 }
