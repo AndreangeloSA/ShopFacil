@@ -7,6 +7,7 @@ public class CatalogoReal implements CatalogoService{
     @Override
     public String buscarProduto(int id) {
 
+        //realiza consulta
         for (int produto : listaProdutos){
             if (produto == id){
                 return "[DB] Consultando banco de dados.";

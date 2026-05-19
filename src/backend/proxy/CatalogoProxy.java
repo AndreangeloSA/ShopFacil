@@ -13,6 +13,8 @@ public class CatalogoProxy implements CatalogoService{
 
     @Override
     public String buscarProduto(int id) {
+
+        //realiza verificacao de autorizacao
         if(!autorizacao.equals("is_admin")){
             return "Acesso negado";
         }
@@ -21,6 +23,7 @@ public class CatalogoProxy implements CatalogoService{
             return "[CACHE] Retornando do cache (sem acesso ao banco)";
         }
 
+        //lazy initialization
         if(catalogoReal == null){
             catalogoReal = new CatalogoReal();
         }
