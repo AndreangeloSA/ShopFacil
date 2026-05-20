@@ -1,5 +1,6 @@
 package backend;
 import backend.adapter.GlobalPayAdapter;
+import backend.adapter.Pagamento;
 import backend.adapter.PayBrasilAdapter;
 import backend.decorator.*;
 import backend.facade.CheckoutFacade;
@@ -15,12 +16,12 @@ public class Main {
         float valor = 250;
         String service = "service";
 
-        HashMap pedido1 = new HashMap<>();
+        HashMap<Object, Object> pedido1 = new HashMap<>();
         pedido1.put("id", "01");
-        pedido1.put("nome", "Notebook");
+        pedido1.put("itens", "Notebook");
         pedido1.put("valor", 5000.00);
 
-        HashMap dados_cartao = new HashMap<>();
+        HashMap<Object, Object> dados_cartao = new HashMap<>();
         dados_cartao.put("numero", "1234 5678 1234");
         dados_cartao.put("token", "token_abc123");
         dados_cartao.put("titular", "Lewis Hamilton");
@@ -61,8 +62,8 @@ public class Main {
         // -------------------
 
         CheckoutFacade checkout = new CheckoutFacade();
-        PayBrasilAdapter gateway = new PayBrasilAdapter();
-        checkout.finalizarCompra(gateway, pedido1, dados_cartao);
+        Pagamento gateway = new PayBrasilAdapter();
+        checkout.finalizarCompra((PayBrasilAdapter) gateway, pedido1, dados_cartao);
 
         // -------------------
         //  ## DECORATOR ##
@@ -85,12 +86,12 @@ public class Main {
         // -------------------
 
         CatalogoReal catalogoReal = new CatalogoReal();
-        System.out.println("\n[PROXY] Buscando produto #42... " + catalogoReal.buscarProduto(42));
+        System.out.println("\n[PROXY] Buscando produto #42... " + catalogoReal.buscarProduto(42, "is_admin"));
 
-        CatalogoProxy catalogoProxy = new CatalogoProxy("is_admin");
-        System.out.println("[PROXY] Buscando produto #42... " + catalogoProxy.buscarProduto(42));
+        CatalogoProxy catalogoProxy = new CatalogoProxy();
+        System.out.println("[PROXY] Buscando produto #42... " + catalogoProxy.buscarProduto(42, "is_admin"));
 
-        CatalogoProxy catalogoProxy2 = new CatalogoProxy("not_admin");
-        System.out.println("[PROXY] Tentando produto especial sem permissão... " + catalogoProxy2.buscarProduto(42));
+        CatalogoReal catalogoReal2 = new CatalogoReal();
+        System.out.println(catalogoReal2.buscarProduto(16, "not_admin"));
     }
 }
