@@ -29,7 +29,7 @@ public class CatalogoProxy implements CatalogoService{
             catalogoReal = new CatalogoReal();
         }
 
-        return "";
+        return catalogoReal.buscarProduto(id, autorizacao);
     }
 
     public static HashMap<Integer, HashMap<String, Object>> getCache() {
