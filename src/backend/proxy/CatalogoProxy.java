@@ -21,7 +21,7 @@ public class CatalogoProxy implements CatalogoService{
                 }
                 return "[CACHE] Retornando do cache: Produto encontrado";
             }
-            return "[CACHE] Produto não encontrado";
+            return catalogoReal.buscarProduto(id, autorizacao);
         }
 
         //lazy initialization
