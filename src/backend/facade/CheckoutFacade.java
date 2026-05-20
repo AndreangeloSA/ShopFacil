@@ -22,7 +22,7 @@ public class CheckoutFacade {
 
         //CALCULA FRETE
         double custo_frete = freteService.calcularFrete(pedido1);
-        System.out.println("    [FRETE]     Custo calculado: R$" + custo_frete);
+        System.out.printf("\n    [FRETE]     Custo calculado: R$%.2f", custo_frete);
 
         //PROCESSAR PAGAMENTO
         double valor_total = (double) pedido1.get("valor") + custo_frete;

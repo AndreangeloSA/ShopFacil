@@ -70,16 +70,16 @@ public class Main {
         // -------------------
 
         Pedido pedido = new PedidoBase(5000, "Notebook");
-        System.out.println("\n[DECORATOR] Pedido base:          " + pedido.getDescricao() + "            | R$" + pedido.getValor());
+        System.out.printf("\n[DECORATOR] Pedido base:          " + pedido.getDescricao() + "            | R$%.2f", pedido.getValor());
 
         pedido = new DescontoDecorator(pedido, 10);
-        System.out.println("[DECORATOR] + Desconto 10%:       " + pedido.getDescricao() + "c/desc10%" + "   | R$" + pedido.getValor());
+        System.out.printf("\n[DECORATOR] + Desconto 10%%:       " + pedido.getDescricao() + "c/desc10%%" + "   | R$%.2f", pedido.getValor());
 
         pedido = new EmbrulhoDecorator(pedido, true);
-        System.out.println("[DECORATOR] + Embrulho presente:  " + pedido.getDescricao() + "       | R$" + pedido.getValor());
+        System.out.printf("\n[DECORATOR] + Embrulho presente:  " + pedido.getDescricao() + "       | R$%.2f", pedido.getValor());
 
         pedido = new FreteExpressDecorator(pedido, true);
-        System.out.println("[DECORATOR] + FreteExpress:       " + pedido.getDescricao() + "   | R$" + pedido.getValor());
+        System.out.printf("\n[DECORATOR] + FreteExpress:       " + pedido.getDescricao() + "   | R$%.2f\n", pedido.getValor());
 
         // -------------------
         //  ## PROXY ##
