@@ -57,7 +57,7 @@ public class CatalogoReal implements CatalogoService{
 
         // bloqueia acesso
         if (produtoEspecial && !Objects.equals(autorizacao, "is_admin")) {
-            return "[PROXY] Produto especial sem permissão... ACESSO NEGADO";
+            return "[PROXY] Produto especial sem permissão... [ERRO] ACESSO NEGADO";
         }
 
         // adiciona ao cache

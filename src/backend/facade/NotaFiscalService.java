@@ -9,6 +9,6 @@ public class NotaFiscalService {
         Random random = new Random();
 
         int num_NF = random.nextInt(10000, 99999);
-        return ("    [NF]      Nota fiscal emitida - NF-2026-" + num_NF);
+        return ("    [NF]        Nota fiscal emitida - NF-2026-" + num_NF);
     }
 }
